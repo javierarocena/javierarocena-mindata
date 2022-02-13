@@ -1,0 +1,5 @@
+<app-spinner *ngIf="isLoading; else content"></app-spinner>
+
+<ng-template #content>
+  <h1>{{ heroDetail.name }}</h1>
+</ng-template>

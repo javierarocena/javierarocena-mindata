@@ -9,6 +9,8 @@ import { Hero } from '../../interface/hero.model';
 export class HeroesListComponent {
   @Input() heroes: Hero[] = [];
 
+  @Output('onHeroSelect') heroSelectEmitter: EventEmitter<Hero> =
+    new EventEmitter();
   @Output('onHeroEdit') heroEditEmitter: EventEmitter<Hero> =
     new EventEmitter();
   @Output('onHeroDelete') heroDeleteEmitter: EventEmitter<Hero> =

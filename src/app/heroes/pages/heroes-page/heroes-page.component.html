@@ -1,10 +1,11 @@
 <h1>My heroes</h1>
 
-<app-spinner *ngIf="isLoading; else heroesList"></app-spinner>
+<app-spinner *ngIf="isLoading; else content"></app-spinner>
 
-<ng-template #heroesList>
+<ng-template #content>
   <app-heroes-list
     [heroes]="heroes"
+    (onHeroSelect)="onHeroSelect($event)"
     (onHeroEdit)="onHeroEdit($event)"
     (onHeroDelete)="onHeroDelete($event)"
   ></app-heroes-list>

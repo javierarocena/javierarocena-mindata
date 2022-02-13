@@ -1,6 +1,7 @@
 import { HeroesService } from './../../heroes.service';
 import { Component, OnInit } from '@angular/core';
 import { Hero } from '../../interface/hero.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-heroes-page',
@@ -11,7 +12,7 @@ export class HeroesPageComponent implements OnInit {
   heroes: Hero[] = [];
   isLoading: boolean = false;
 
-  constructor(private heroesService: HeroesService) {}
+  constructor(private heroesService: HeroesService, private router: Router) {}
 
   ngOnInit() {
     this.loadHeroes();
@@ -31,5 +32,9 @@ export class HeroesPageComponent implements OnInit {
 
   onHeroDelete(hero: Hero) {
     alert('Vas a borrar ' + hero.name);
+  }
+
+  onHeroSelect(hero: Hero) {
+    this.router.navigateByUrl(`/heroes/${hero.name}`);
   }
 }

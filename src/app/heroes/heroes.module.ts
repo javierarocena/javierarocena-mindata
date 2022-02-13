@@ -1,3 +1,4 @@
+import { HeroeDetailPageComponent } from './pages/heroe-detail-page/heroe-detail-page.component';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { SharedModule } from 'src/shared/shared.module';
@@ -9,8 +10,12 @@ import { HeroesPageComponent } from './pages/heroes-page/heroes-page.component';
 
 @NgModule({
   imports: [CommonModule, SharedModule, HeroesRoutingModule],
-  exports: [HeroesPageComponent],
-  declarations: [HeroesPageComponent, HeroesListComponent, HeroItemComponent],
+  declarations: [
+    HeroesPageComponent,
+    HeroeDetailPageComponent,
+    HeroesListComponent,
+    HeroItemComponent,
+  ],
   providers: [HeroesService],
 })
 export class HeroesModule {}

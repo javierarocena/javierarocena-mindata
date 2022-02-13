@@ -2,7 +2,7 @@
 
 <button>Añadir</button>
 
-<div *ngFor="let hero of heroes">
+<div *ngFor="let hero of heroes" (click)="heroSelectEmitter.emit(hero)">
   <app-hero-item
     [hero]="hero"
     (onEdit)="heroEditEmitter.emit($event)"
