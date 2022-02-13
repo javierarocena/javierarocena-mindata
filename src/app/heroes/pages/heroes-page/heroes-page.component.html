@@ -1,0 +1,7 @@
+<h1>My heroes</h1>
+
+<app-spinner *ngIf="isLoading; else heroesList"></app-spinner>
+
+<ng-template #heroesList>
+  <app-heroes-list [heroes]="heroes"></app-heroes-list>
+</ng-template>
