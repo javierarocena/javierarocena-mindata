@@ -3,5 +3,9 @@
 <app-spinner *ngIf="isLoading; else heroesList"></app-spinner>
 
 <ng-template #heroesList>
-  <app-heroes-list [heroes]="heroes"></app-heroes-list>
+  <app-heroes-list
+    [heroes]="heroes"
+    (onHeroEdit)="onHeroEdit($event)"
+    (onHeroDelete)="onHeroDelete($event)"
+  ></app-heroes-list>
 </ng-template>

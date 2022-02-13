@@ -1,5 +1,6 @@
 import { HeroesService } from './../../heroes.service';
 import { Component, OnInit } from '@angular/core';
+import { Hero } from '../../interface/hero.model';
 
 @Component({
   selector: 'app-heroes-page',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./heroes-page.component.scss'],
 })
 export class HeroesPageComponent implements OnInit {
-  heroes: any = [];
+  heroes: Hero[] = [];
   isLoading: boolean = false;
 
   constructor(private heroesService: HeroesService) {}
@@ -22,5 +23,13 @@ export class HeroesPageComponent implements OnInit {
       this.isLoading = false;
       this.heroes = heroes;
     });
+  }
+
+  onHeroEdit(hero: Hero) {
+    alert('Vas a editar ' + hero.name);
+  }
+
+  onHeroDelete(hero: Hero) {
+    alert('Vas a borrar ' + hero.name);
   }
 }

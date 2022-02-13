@@ -1,9 +1,11 @@
 <input placeholder="Buscar..." type="text" />
 
 <button>Añadir</button>
-<button>Editar</button>
-<button>Borrar</button>
 
 <div *ngFor="let hero of heroes">
-  <app-hero-item [hero]="hero"></app-hero-item>
+  <app-hero-item
+    [hero]="hero"
+    (onEdit)="heroEditEmitter.emit($event)"
+    (onDelete)="heroDeleteEmitter.emit($event)"
+  ></app-hero-item>
 </div>

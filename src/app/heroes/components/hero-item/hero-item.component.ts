@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Hero } from '../../interface/hero.model';
 
 @Component({
@@ -6,10 +6,9 @@ import { Hero } from '../../interface/hero.model';
   templateUrl: './hero-item.component.html',
   styleUrls: ['./hero-item.component.scss'],
 })
-export class HeroItemComponent implements OnInit {
+export class HeroItemComponent {
   @Input() hero: Hero = {} as Hero;
 
-  constructor() {}
-
-  ngOnInit() {}
+  @Output('onDelete') deleteEmitter: EventEmitter<Hero> = new EventEmitter();
+  @Output('onEdit') editEmitter: EventEmitter<Hero> = new EventEmitter();
 }
