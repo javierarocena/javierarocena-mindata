@@ -26,18 +26,19 @@ export class HeroesPageComponent implements OnInit {
     });
   }
 
-  onHeroSearch(searchTerm: string | undefined) {
+  searchHero(searchTerm: string | undefined) {
     return this.heroesService.search(searchTerm).subscribe((heroes) => {
       this.heroes = heroes;
     });
   }
 
-  onHeroEdit(hero: Hero) {
+  editHero(hero: Hero) {
     alert('Vas a editar ' + hero.name);
   }
 
-  onHeroDelete(hero: Hero) {
-    alert('Vas a borrar ' + hero.name);
+  deleteHero(hero: Hero) {
+    this.heroesService.delete(hero.id);
+    this.loadHeroes();
   }
 
   onHeroSelect(hero: Hero) {

@@ -4,15 +4,17 @@ import { Hero } from './interface/hero.model';
 import { HeroProvider } from './interface/hero.provider.model';
 
 export class HeroesProvider implements HeroProvider {
+  private heroes = HEROES_MOCK_DATA;
+
   getAll(): Observable<Hero[]> {
-    return of(HEROES_MOCK_DATA).pipe(delay(600));
+    return of(this.heroes).pipe(delay(240));
   }
 
   query(heroPropValue: any, heroPropName: keyof Hero): Observable<Hero[]> {
-    const result = HEROES_MOCK_DATA.filter(
+    const result = this.heroes.filter(
       (hero) => hero[heroPropName] == heroPropValue
     );
-    return of(result).pipe(delay(600));
+    return of(result).pipe(delay(240));
   }
 
   update(heroId: string, partialHero: Partial<Hero>): Promise<Hero> {
@@ -20,6 +22,9 @@ export class HeroesProvider implements HeroProvider {
   }
 
   delete(heroId: string): Promise<Hero> {
-    return new Promise((resolve) => resolve(null as any));
+    return new Promise((resolve) => {
+      this.heroes = [...this.heroes.filter((hero) => hero.id !== heroId)];
+      resolve({} as Hero);
+    });
   }
 }

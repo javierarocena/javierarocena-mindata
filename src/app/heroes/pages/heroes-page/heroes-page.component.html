@@ -5,9 +5,11 @@
 <ng-template #content>
   <app-heroes-list
     [heroes]="heroes"
-    (onSearch)="onHeroSearch($event)"
+    (onSearch)="searchHero($event)"
     (onHeroSelect)="onHeroSelect($event)"
-    (onHeroEdit)="onHeroEdit($event)"
-    (onHeroDelete)="onHeroDelete($event)"
+    (onHeroEdit)="editHero($event)"
+    (onHeroDelete)="deleteHero($event)"
   ></app-heroes-list>
+
+  <p *ngIf="!heroes?.length">Añade tu primer héroe</p>
 </ng-template>
