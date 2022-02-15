@@ -1,0 +1,14 @@
+[animFadeIn] {
+  opacity: 0;
+  animation: 300ms ease-in-out animFadeIn;
+  animation-fill-mode: both;
+}
+
+@keyframes animFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

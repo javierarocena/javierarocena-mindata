@@ -14,7 +14,7 @@ export class HeroItemComponent {
 
   onEditBtnPressed(event: MouseEvent) {
     event.stopPropagation();
-    this.deleteEmitter.emit(this.hero);
+    this.editEmitter.emit(this.hero);
   }
   onRemoveBtnPressed(event: MouseEvent) {
     event.stopPropagation();

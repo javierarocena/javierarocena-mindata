@@ -1,0 +1,42 @@
+.container {
+  width: 100%;
+  height: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.mat-drawer-container {
+  height: 100%;
+}
+
+.sidenav-content {
+  display: flex;
+  height: 100%;
+  align-items: flex-start;
+  justify-content: center;
+  transition: all 200ms ease-in-out;
+  filter: blur(0px);
+}
+.sidenav-content.is-loading {
+  opacity: 0.4;
+  filter: blur(4px);
+}
+
+.sidenav {
+  padding: 24px;
+}
+
+.drawer-content {
+  padding-top: 24px;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+app-spinner {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+}

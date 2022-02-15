@@ -1,16 +1,47 @@
-<input
-  (keyup)="onSearchInputChange($event)"
-  placeholder="Buscar..."
-  autofocus
-  type="text"
-/>
-
-<button>Añadir</button>
-
-<div *ngFor="let hero of heroes" (click)="heroSelectEmitter.emit(hero)">
-  <app-hero-item
-    [hero]="hero"
-    (onEdit)="heroEditEmitter.emit($event)"
-    (onDelete)="heroDeleteEmitter.emit($event)"
-  ></app-hero-item>
+<div class="heroes-list">
+  <h1 class="heroes-list__title">Mis héroes</h1>
+  <button (click)="heroCreateEmitter.emit()" mat-raised-button>Añadir</button>
 </div>
+
+<mat-form-field appearance="fill">
+  <mat-icon matPrefix>search</mat-icon>
+  <mat-label>Buscar...</mat-label>
+  <input
+    placeholder="Ej: Batman"
+    matInput
+    type="text"
+    [(ngModel)]="termSearch"
+    autofocus
+    (keyup)="onSearchInputChange($event)"
+  />
+  <button
+    *ngIf="termSearch"
+    matSuffix
+    mat-icon-button
+    aria-label="Clear"
+    (click)="onClear()"
+  >
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-form-field>
+
+<mat-selection-list #list [multiple]="false">
+  <mat-list-option
+    *ngFor="let hero of heroes"
+    [value]="hero"
+    role="listitem"
+    animFadeIn
+    (click)="heroSelectEmitter.emit(hero)"
+  >
+    <app-hero-item
+      [hero]="hero"
+      (onEdit)="heroEditEmitter.emit($event)"
+      (onDelete)="heroDeleteEmitter.emit($event)"
+    ></app-hero-item>
+  </mat-list-option>
+</mat-selection-list>
+
+<p *ngIf="!heroes?.length && !termSearch">Añade tu primer héroe</p>
+<p *ngIf="!heroes?.length && termSearch">
+  Sin resultados para "{{ termSearch }}"
+</p>

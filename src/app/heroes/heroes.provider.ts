@@ -18,7 +18,15 @@ export class HeroesProvider implements HeroProvider {
   }
 
   update(heroId: string, partialHero: Partial<Hero>): Promise<Hero> {
-    return new Promise((resolve) => resolve(partialHero as Hero));
+    return new Promise((resolve) => {
+      const heroIndex = this.heroes.findIndex((hero) => hero.id === heroId);
+      if (!heroId) throw new Error('Hero not found');
+      this.heroes[heroIndex] = {
+        ...this.heroes[heroIndex],
+        ...partialHero,
+      };
+      resolve(this.heroes[heroIndex]);
+    });
   }
 
   delete(heroId: string): Promise<Hero> {

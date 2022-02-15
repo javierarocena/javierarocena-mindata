@@ -1,0 +1,28 @@
+:host {
+  background: white;
+  height: 100%;
+  padding: 32px;
+  border-radius: 4px;
+}
+
+.heroes-list {
+  display: flex;
+  justify-content: space-between;
+  min-width: 255px;
+  margin-bottom: 16px;
+
+  &__title,
+  h1 {
+    margin: 0px;
+  }
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+mat-list-option {
+  box-shadow: 0 1px 5px -4px black;
+  border-radius: 15px;
+  margin-bottom: 8px;
+}

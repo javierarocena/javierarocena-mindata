@@ -1,3 +1,21 @@
-<h4>{{ hero.name }}</h4>
-<button (click)="onEditBtnPressed($event)">Editar</button>
-<button (click)="onRemoveBtnPressed($event)">Borrar</button>
+<div class="hero-item">
+  <span>{{ hero.name }}</span>
+
+  <button
+    mat-icon-button
+    [matMenuTriggerFor]="menu"
+    (click)="$event.stopPropagation()"
+  >
+    <mat-icon>more_vert</mat-icon>
+  </button>
+</div>
+<mat-menu #menu="matMenu">
+  <button (click)="onEditBtnPressed($event)" mat-menu-item>
+    <mat-icon>mode_edit</mat-icon>
+    <span>Editar</span>
+  </button>
+  <button (click)="onRemoveBtnPressed($event)" mat-menu-item>
+    <mat-icon>delete</mat-icon>
+    <span>Borrar</span>
+  </button>
+</mat-menu>

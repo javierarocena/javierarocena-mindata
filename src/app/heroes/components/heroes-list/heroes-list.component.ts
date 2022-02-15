@@ -9,6 +9,8 @@ import { Hero } from '../../interface/hero.model';
 export class HeroesListComponent {
   @Input() heroes: Hero[] = [];
 
+  termSearch: string | undefined;
+
   @Output('onHeroSelect') heroSelectEmitter: EventEmitter<Hero> =
     new EventEmitter();
 
@@ -21,7 +23,15 @@ export class HeroesListComponent {
   @Output('onSearch') heroSearchEmitter: EventEmitter<string | undefined> =
     new EventEmitter();
 
+  @Output('onCreate') heroCreateEmitter: EventEmitter<void> =
+    new EventEmitter();
+
   onSearchInputChange(event: Event) {
     this.heroSearchEmitter.emit((event.target as HTMLInputElement).value);
+  }
+
+  onClear() {
+    this.termSearch = '';
+    this.heroSearchEmitter.emit('');
   }
 }

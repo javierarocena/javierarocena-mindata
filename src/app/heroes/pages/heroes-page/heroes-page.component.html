@@ -1,15 +1,26 @@
-<h1>My heroes</h1>
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer class="example-sidenav" mode="side">
+    <div class="drawer-content">
+      <app-heroe-editor-page
+        *ngIf="heroEditing"
+        [hero]="heroEditing"
+      ></app-heroe-editor-page>
+    </div>
+    <button mat-icon-button class="close-btn" (click)="drawer.close()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-drawer>
 
-<app-spinner *ngIf="isLoading; else content"></app-spinner>
+  <div class="sidenav-content" animFadeIn>
+    <app-spinner *ngIf="isLoading"></app-spinner>
 
-<ng-template #content>
-  <app-heroes-list
-    [heroes]="heroes"
-    (onSearch)="searchHero($event)"
-    (onHeroSelect)="onHeroSelect($event)"
-    (onHeroEdit)="editHero($event)"
-    (onHeroDelete)="deleteHero($event)"
-  ></app-heroes-list>
-
-  <p *ngIf="!heroes?.length">Añade tu primer héroe</p>
-</ng-template>
+    <app-heroes-list
+      [heroes]="heroes"
+      (onSearch)="searchHero($event)"
+      (onHeroSelect)="onHeroSelect($event)"
+      (onHeroEdit)="showEditor($event)"
+      (onHeroDelete)="deleteHero($event)"
+      (onCreate)="onCreateHero()"
+    ></app-heroes-list>
+  </div>
+</mat-drawer-container>
