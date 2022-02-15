@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { HeroesProvider } from './heroes.provider';
+import { Hero } from './interface/hero.model';
 import { HeroProvider } from './interface/hero.provider.model';
 
 @Injectable()
@@ -10,17 +13,19 @@ export class HeroesService {
     return this.provider.getAll();
   }
 
-  getById(heroId: number) {
-    return this.provider.getById(heroId);
+  getById(heroId: string): Observable<Hero | null> {
+    return this.provider.query(heroId, 'id').pipe(map((heroes) => heroes[0]));
   }
 
-  search(name: string) {}
+  search(name: string): Observable<Hero[]> {
+    return this.provider.query(name, 'name');
+  }
 
-  update(heroId: number, partialHero: any) {
+  update(heroId: string, partialHero: any) {
     return this.provider.update(heroId, partialHero);
   }
 
-  delete(heroId: number) {
+  delete(heroId: string) {
     return this.provider.delete(heroId);
   }
 }

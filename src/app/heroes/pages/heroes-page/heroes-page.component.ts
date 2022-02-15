@@ -35,6 +35,6 @@ export class HeroesPageComponent implements OnInit {
   }
 
   onHeroSelect(hero: Hero) {
-    this.router.navigateByUrl(`/heroes/${hero.name}`);
+    this.router.navigateByUrl(`/heroes/${hero.id}`);
   }
 }

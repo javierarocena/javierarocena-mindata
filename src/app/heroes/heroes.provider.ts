@@ -8,15 +8,18 @@ export class HeroesProvider implements HeroProvider {
     return of(HEROES_MOCK_DATA).pipe(delay(600));
   }
 
-  getById(heroId: number): Observable<Hero | null> {
-    return of(HEROES_MOCK_DATA[0]).pipe(delay(600));
+  query(heroPropValue: any, heroPropName: keyof Hero): Observable<Hero[]> {
+    const result = HEROES_MOCK_DATA.filter(
+      (hero) => hero[heroPropName] == heroPropValue
+    );
+    return of(result).pipe(delay(600));
   }
 
-  update(heroId: number, partialHero: Partial<Hero>): Promise<Hero> {
+  update(heroId: string, partialHero: Partial<Hero>): Promise<Hero> {
     return new Promise((resolve) => resolve(partialHero as Hero));
   }
 
-  delete(heroId: number): Promise<Hero> {
+  delete(heroId: string): Promise<Hero> {
     return new Promise((resolve) => resolve(null as any));
   }
 }

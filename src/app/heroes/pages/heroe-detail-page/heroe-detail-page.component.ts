@@ -1,6 +1,6 @@
 import { Hero } from './../../interface/hero.model';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HeroesService } from '../../heroes.service';
 
 @Component({
@@ -14,6 +14,7 @@ export class HeroeDetailPageComponent implements OnInit {
 
   constructor(
     private heroesService: HeroesService,
+    private router: Router,
     private activatedRoute: ActivatedRoute
   ) {}
 
@@ -29,5 +30,9 @@ export class HeroeDetailPageComponent implements OnInit {
         this.isLoading = false;
       });
     });
+  }
+
+  navigateToHome() {
+    this.router.navigateByUrl('/heroes');
   }
 }

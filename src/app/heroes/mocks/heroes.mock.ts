@@ -2,11 +2,11 @@ import { Hero } from '../interface/hero.model';
 
 export const HEROES_MOCK_DATA: Hero[] = [
   {
-    id: 1,
+    id: 'superman',
     name: 'Superman',
   },
   {
-    id: 2,
+    id: 'batman',
     name: 'Batman',
   },
 ];

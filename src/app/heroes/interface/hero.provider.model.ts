@@ -3,7 +3,7 @@ import { Hero } from './hero.model';
 
 export interface HeroProvider {
   getAll(): Observable<Hero[]>;
-  getById(heroId: number): Observable<Hero | null>;
-  update(heroId: number, partialHero: Partial<Hero>): Promise<Hero>;
-  delete(heroId: number): Promise<Hero>;
+  update(heroId: string, partialHero: Partial<Hero>): Promise<Hero>;
+  delete(heroId: string): Promise<Hero>;
+  query(heroPropValue: any, heroPropName: string): Observable<Hero[]>;
 }
