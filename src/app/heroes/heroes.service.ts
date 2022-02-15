@@ -17,8 +17,18 @@ export class HeroesService {
     return this.provider.query(heroId, 'id').pipe(map((heroes) => heroes[0]));
   }
 
-  search(name: string): Observable<Hero[]> {
-    return this.provider.query(name, 'name');
+  search(name: string | undefined): Observable<Hero[]> {
+    return this.provider
+      .getAll()
+      .pipe(
+        map((heroes) =>
+          name
+            ? heroes.filter((hero) =>
+                hero.name.toLowerCase().includes(name.toLowerCase())
+              )
+            : heroes
+        )
+      );
   }
 
   update(heroId: string, partialHero: any) {

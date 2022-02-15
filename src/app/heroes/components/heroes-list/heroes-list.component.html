@@ -1,4 +1,9 @@
-<input placeholder="Buscar..." type="text" />
+<input
+  (keyup)="onSearchInputChange($event)"
+  placeholder="Buscar..."
+  autofocus
+  type="text"
+/>
 
 <button>Añadir</button>
 

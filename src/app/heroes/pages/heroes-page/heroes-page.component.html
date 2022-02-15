@@ -5,6 +5,7 @@
 <ng-template #content>
   <app-heroes-list
     [heroes]="heroes"
+    (onSearch)="onHeroSearch($event)"
     (onHeroSelect)="onHeroSelect($event)"
     (onHeroEdit)="onHeroEdit($event)"
     (onHeroDelete)="onHeroDelete($event)"

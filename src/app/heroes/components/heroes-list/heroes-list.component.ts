@@ -11,8 +11,17 @@ export class HeroesListComponent {
 
   @Output('onHeroSelect') heroSelectEmitter: EventEmitter<Hero> =
     new EventEmitter();
+
   @Output('onHeroEdit') heroEditEmitter: EventEmitter<Hero> =
     new EventEmitter();
+
   @Output('onHeroDelete') heroDeleteEmitter: EventEmitter<Hero> =
     new EventEmitter();
+
+  @Output('onSearch') heroSearchEmitter: EventEmitter<string | undefined> =
+    new EventEmitter();
+
+  onSearchInputChange(event: Event) {
+    this.heroSearchEmitter.emit((event.target as HTMLInputElement).value);
+  }
 }

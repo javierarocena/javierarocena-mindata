@@ -26,6 +26,12 @@ export class HeroesPageComponent implements OnInit {
     });
   }
 
+  onHeroSearch(searchTerm: string | undefined) {
+    return this.heroesService.search(searchTerm).subscribe((heroes) => {
+      this.heroes = heroes;
+    });
+  }
+
   onHeroEdit(hero: Hero) {
     alert('Vas a editar ' + hero.name);
   }

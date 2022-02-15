@@ -11,4 +11,13 @@ export class HeroItemComponent {
 
   @Output('onDelete') deleteEmitter: EventEmitter<Hero> = new EventEmitter();
   @Output('onEdit') editEmitter: EventEmitter<Hero> = new EventEmitter();
+
+  onEditBtnPressed(event: MouseEvent) {
+    event.stopPropagation();
+    this.deleteEmitter.emit(this.hero);
+  }
+  onRemoveBtnPressed(event: MouseEvent) {
+    event.stopPropagation();
+    this.deleteEmitter.emit(this.hero);
+  }
 }
