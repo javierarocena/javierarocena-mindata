@@ -16,9 +16,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
+import { MatDialogModule } from '@angular/material/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HeroFormComponent } from './components/hero-form/hero-form.component';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { ConfirmDialogComponent } from '../comunications/dialogs/confirm.dialog.component';
 
 const PAGES = [
   HeroesPageComponent,
@@ -36,6 +38,7 @@ const MATERIAL_MODULES = [
   MatInputModule,
   MatCardModule,
   MatProgressBarModule,
+  MatDialogModule,
   MatButtonModule,
 ];
 
@@ -48,7 +51,7 @@ const MATERIAL_MODULES = [
     HeroesRoutingModule,
     ...MATERIAL_MODULES,
   ],
-  declarations: [...PAGES, ...COMPONENTS],
+  declarations: [ConfirmDialogComponent, ...PAGES, ...COMPONENTS],
   providers: [HeroesService],
 })
 export class HeroesModule {}

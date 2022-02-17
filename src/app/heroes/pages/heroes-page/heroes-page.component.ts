@@ -60,7 +60,12 @@ export class HeroesPageComponent implements OnInit {
   }
 
   onCreateHero() {
-    this.heroEditing = {} as Hero;
+    this.heroEditing = {
+      name: '',
+      color: '',
+      date: '',
+      height: undefined,
+    } as Hero;
     this.drawerComponent?.open();
   }
 }

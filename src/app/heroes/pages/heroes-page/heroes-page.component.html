@@ -1,9 +1,16 @@
 <mat-drawer-container class="example-container" autosize>
-  <mat-drawer #drawer class="example-sidenav" mode="side">
+  <mat-drawer
+    #drawer
+    (closed)="heroEditing = undefined"
+    class="example-sidenav"
+    mode="side"
+  >
     <div class="drawer-content">
       <app-heroe-editor-page
         *ngIf="heroEditing"
         [hero]="heroEditing"
+        (onSubmit)="drawer.close(); heroEditing = undefined"
+        animFadeIn
       ></app-heroe-editor-page>
     </div>
     <button mat-icon-button class="close-btn" (click)="drawer.close()">

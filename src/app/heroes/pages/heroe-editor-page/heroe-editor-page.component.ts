@@ -1,7 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { HeroesService } from '../../heroes.service';
 import { Hero } from '../../interface/hero.model';
-
 @Component({
   selector: 'app-heroe-editor-page',
   templateUrl: './heroe-editor-page.component.html',
@@ -9,6 +8,8 @@ import { Hero } from '../../interface/hero.model';
 })
 export class HeroeEditorPageComponent implements OnInit {
   @Input() hero: Hero = {} as Hero;
+
+  @Output('onSubmit') submitEmitter = new EventEmitter<Hero>();
 
   constructor(private heroesService: HeroesService) {}
 
@@ -20,5 +21,6 @@ export class HeroeEditorPageComponent implements OnInit {
     } else {
       this.heroesService.create(hero);
     }
+    this.submitEmitter.emit(hero);
   }
 }
