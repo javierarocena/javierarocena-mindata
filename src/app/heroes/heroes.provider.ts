@@ -1,13 +1,21 @@
 import { HEROES_MOCK_DATA } from './mocks/heroes.mock';
-import { delay, Observable, of } from 'rxjs';
+import { delay, from, Observable, of } from 'rxjs';
 import { Hero } from './interface/hero.model';
 import { HeroProvider } from './interface/hero.provider.model';
+import { HttpClient } from '@angular/common/http';
 
 export class HeroesProvider implements HeroProvider {
   private heroes = HEROES_MOCK_DATA;
 
-  getAll(): Observable<Hero[]> {
+  getAll(): Observable<any> {
     return of(this.heroes).pipe(delay(240));
+  }
+
+  create(hero: Hero): Promise<Hero> {
+    return new Promise((resolve) => {
+      this.heroes.push(hero);
+      resolve(hero);
+    });
   }
 
   query(heroPropValue: any, heroPropName: keyof Hero): Observable<Hero[]> {

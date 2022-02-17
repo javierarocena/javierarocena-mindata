@@ -31,6 +31,12 @@ export class HeroesService {
       );
   }
 
+  create(hero: Hero) {
+    debugger;
+    if (!hero.id) hero.id = hero.name;
+    this.provider.create(hero);
+  }
+
   update(heroId: string, partialHero: any) {
     return this.provider.update(heroId, partialHero);
   }

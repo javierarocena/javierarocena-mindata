@@ -1,7 +1,21 @@
-<button mat-button (click)="navigateToHome()">Back</button>
+<div class="hero-detail">
+  <button mat-button (click)="navigateToHome()">Back</button>
 
-<app-spinner *ngIf="isLoading; else content"></app-spinner>
+  <app-spinner *ngIf="isLoading; else content"></app-spinner>
 
-<ng-template #content>
-  <h1>{{ heroDetail.name }}</h1>
-</ng-template>
+  <ng-template #content>
+    <mat-card class="hero-detail__card" animFadeIn>
+      <div class="hero-detail__content">
+        <div
+          class="hero-detail__avatar"
+          [ngStyle]="{ background: heroDetail?.color }"
+        ></div>
+        <div>
+          <h1>{{ heroDetail?.name }}</h1>
+          <pre>{{ heroDetail?.date | date }}</pre>
+          <pre>{{ heroDetail?.height }}m</pre>
+        </div>
+      </div>
+    </mat-card>
+  </ng-template>
+</div>
