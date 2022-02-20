@@ -1,7 +1,6 @@
 import { HeroeDetailPageComponent } from './pages/heroe-detail-page/heroe-detail-page.component';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { SharedModule } from 'src/shared/shared.module';
 import { HeroItemComponent } from './components/hero-item/hero-item.component';
 import { HeroesListComponent } from './components/heroes-list/heroes-list.component';
 import { HeroesRoutingModule } from './heroes.routing';
@@ -21,6 +20,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HeroFormComponent } from './components/hero-form/hero-form.component';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { ConfirmDialogComponent } from '../comunications/dialogs/confirm.dialog.component';
+import { HeroesProvider } from './heroes.provider';
+import { SharedModule } from 'src/shared/shared.module';
 
 const PAGES = [
   HeroesPageComponent,
@@ -52,6 +53,6 @@ const MATERIAL_MODULES = [
     ...MATERIAL_MODULES,
   ],
   declarations: [ConfirmDialogComponent, ...PAGES, ...COMPONENTS],
-  providers: [HeroesService],
+  providers: [HeroesService, HeroesProvider],
 })
 export class HeroesModule {}

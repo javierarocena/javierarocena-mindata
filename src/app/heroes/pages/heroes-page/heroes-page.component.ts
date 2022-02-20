@@ -37,13 +37,6 @@ export class HeroesPageComponent implements OnInit {
     });
   }
 
-  editHero(hero: Hero) {
-    const newName = prompt('hola');
-    if (!newName) return;
-    this.heroesService.update(hero.id, { name: newName });
-    this.loadHeroes();
-  }
-
   showEditor(hero: Hero) {
     this.drawerComponent?.open();
     this.heroEditing = hero;
@@ -62,7 +55,7 @@ export class HeroesPageComponent implements OnInit {
   onCreateHero() {
     this.heroEditing = {
       name: '',
-      color: '',
+      color: '#f5f5f5',
       date: '',
       height: undefined,
     } as Hero;

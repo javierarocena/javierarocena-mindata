@@ -1,5 +1,5 @@
 <div class="hero-detail">
-  <button mat-button (click)="navigateToHome()">Back</button>
+  <button mat-button (click)="navigateToHome()">Volver</button>
 
   <app-spinner *ngIf="isLoading; else content"></app-spinner>
 
@@ -13,7 +13,7 @@
         <div>
           <h1>{{ heroDetail?.name }}</h1>
           <pre>{{ heroDetail?.date | date }}</pre>
-          <pre>{{ heroDetail?.height }}m</pre>
+          <pre *ngIf="heroDetail?.height">{{ heroDetail?.height }}m</pre>
         </div>
       </div>
     </mat-card>

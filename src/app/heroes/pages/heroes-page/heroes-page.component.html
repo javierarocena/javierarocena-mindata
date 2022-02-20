@@ -5,12 +5,10 @@
     class="example-sidenav"
     mode="side"
   >
-    <div class="drawer-content">
+    <div class="drawer-content" *ngIf="heroEditing" animDelayFadeIn>
       <app-heroe-editor-page
-        *ngIf="heroEditing"
         [hero]="heroEditing"
         (onSubmit)="drawer.close(); heroEditing = undefined"
-        animFadeIn
       ></app-heroe-editor-page>
     </div>
     <button mat-icon-button class="close-btn" (click)="drawer.close()">
@@ -20,7 +18,6 @@
 
   <div class="sidenav-content" animFadeIn>
     <app-spinner *ngIf="isLoading"></app-spinner>
-
     <app-heroes-list
       [heroes]="heroes"
       (onSearch)="searchHero($event)"

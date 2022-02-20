@@ -5,7 +5,7 @@ import {
   OnChanges,
   Output,
 } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Hero } from '../../interface/hero.model';
 
 @Component({
@@ -44,7 +44,7 @@ export class HeroFormComponent implements OnChanges {
   ];
 
   profileForm = new FormGroup({
-    name: new FormControl(''),
+    name: new FormControl('', [Validators.required]),
     color: new FormControl(''),
     date: new FormControl(new Date()),
     height: new FormControl(''),
