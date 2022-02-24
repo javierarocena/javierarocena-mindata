@@ -11,7 +11,6 @@ import { Hero } from '../../interface/hero.model';
 @Component({
   selector: 'app-hero-form',
   templateUrl: './hero-form.component.html',
-  styleUrls: ['./hero-form.component.scss'],
 })
 export class HeroFormComponent implements OnChanges {
   @Input() hero: Hero = {} as Hero;
