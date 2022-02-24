@@ -9,12 +9,12 @@
     placeholder="Ej: Batman"
     matInput
     type="text"
-    [(ngModel)]="termSearch"
+    [formControl]="search"
     autofocus
     (keyup)="onSearchInputChange($event)"
   />
   <button
-    *ngIf="termSearch"
+    *ngIf="search.value"
     matSuffix
     mat-icon-button
     aria-label="Clear"
@@ -40,7 +40,7 @@
   </mat-list-option>
 </mat-selection-list>
 
-<p *ngIf="!heroes?.length && !termSearch">Añade tu primer héroe</p>
-<p *ngIf="!heroes?.length && termSearch">
-  Sin resultados para "{{ termSearch }}"
+<p *ngIf="!heroes?.length && !search.value">Añade tu primer héroe</p>
+<p *ngIf="!heroes?.length && search.value">
+  Sin resultados para "{{ search.value }}"
 </p>

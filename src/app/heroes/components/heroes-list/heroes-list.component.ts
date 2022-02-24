@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { Hero } from '../../interface/hero.model';
 
 @Component({
@@ -9,7 +10,7 @@ import { Hero } from '../../interface/hero.model';
 export class HeroesListComponent {
   @Input() heroes: Hero[] = [];
 
-  termSearch: string | undefined;
+  search = new FormControl('');
 
   @Output('onHeroSelect') heroSelectEmitter: EventEmitter<Hero> =
     new EventEmitter();
@@ -31,7 +32,7 @@ export class HeroesListComponent {
   }
 
   onClear() {
-    this.termSearch = '';
+    this.search.setValue('');
     this.heroSearchEmitter.emit('');
   }
 }
