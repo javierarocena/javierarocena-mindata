@@ -1,18 +1,62 @@
 <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
-  <div *ngFor="let input of HERO_INPUTS">
+  <div>
     <mat-form-field appearance="fill">
-      <mat-icon matPrefix>{{ input.icon }}</mat-icon>
-      <mat-label>{{ input.name }}</mat-label>
+      <mat-icon matPrefix>face</mat-icon>
+      <mat-label>Nombre</mat-label>
       <input
-        [placeholder]="input.name"
+        placeholder="Nombre"
+        inputUppercase
         matInput
-        [id]="input.id"
-        [formControlName]="input.id"
-        [type]="input.type || 'text'"
+        id="name"
+        formControlName="name"
+        type="text"
         autofocus
       />
     </mat-form-field>
   </div>
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-icon matPrefix>visibility</mat-icon>
+      <mat-label>Main color</mat-label>
+      <input
+        placeholder="Main color"
+        matInput
+        id="color"
+        formControlName="color"
+        type="color"
+        autofocus
+      />
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-icon matPrefix>face</mat-icon>
+      <mat-label>event</mat-label>
+      <input
+        placeholder="Date"
+        matInput
+        id="date"
+        formControlName="date"
+        type="date"
+        autofocus
+      />
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-icon matPrefix>height</mat-icon>
+      <mat-label>Height</mat-label>
+      <input
+        placeholder="Height"
+        matInput
+        id="height"
+        formControlName="height"
+        type="number"
+        autofocus
+      />
+    </mat-form-field>
+  </div>
+
   <mat-divider inset></mat-divider>
   <mat-card-actions>
     <button mat-button type="submit" [disabled]="!profileForm.valid">
